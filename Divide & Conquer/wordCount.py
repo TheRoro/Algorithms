@@ -1,3 +1,8 @@
+#Nlog(n) unnecessary algorithm implementation, just for learning resources
+# A lineal scan is way more efficient since n < nlogn
+#don't use
+#please
+
 def wordCount(s, i, j, words):
     if i == j:
         if s[i] == " ":
