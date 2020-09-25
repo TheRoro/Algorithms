@@ -1,11 +1,12 @@
-#import resource, sys
+import sys
 #resource.setrlimit(resource.RLIMIT_STACK, (2**32, -1))
 #sys.setrecursionlimit(10**9)
 
-def solve():
-    rooms = 0
-    n, m = [int(x) for x in input().split()]
-
+def solve(x, y):
+    pockets = 0
+    #n, m = [int(x) for x in input().split()]
+    n = x
+    m = y
     matrix = [[] for x in range(n)]
     for i in range(n):
         matrix[i] = list(input())
@@ -49,8 +50,15 @@ def solve():
             if(matrix[i][j] == '@' and visited[i][j] == False):
                 #print("Un pocket")
                 dfs(i, j)
-                rooms+=1
+                pockets+=1
 
-    return rooms
+    return pockets
 
-print(solve())
+for line in sys.stdin:
+    x, y = line.split()
+    x = int(x)
+    y = int(y)
+    if (x != 0):
+        print(solve(x, y))
+    else:
+        break
