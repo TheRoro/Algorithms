@@ -16,9 +16,8 @@ def bfs():
     q.append(s)
     used[s] = True
     while(q):
-        v = q[0]
+        v = q.pop(0)
         print("i'm in node:", v)
-        q.pop(0)
         for u in adj[v]:
             if(used[u] == False):
                 used[u] = True
