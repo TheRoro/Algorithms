@@ -13,6 +13,7 @@ adjtr = [[2],
         [4]]
 
 visited = len(adj) * [False]
+
 order = []
 comp = []
 
@@ -30,11 +31,17 @@ def dfs2(v):
         if visited[u] == False:
             dfs2(u)
 
+#KOSARAJU
+
 for i in range(len(adj)):
     if visited[i]==False:
         dfs1(i)
 
 visited = len(adj) * [False]
+
+order.reverse()
+print("Order:", order)
+order.reverse()
 
 for i in range(len(adj)):
     v = order[len(adj) - 1 - i]
