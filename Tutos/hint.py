@@ -22,7 +22,6 @@ def solve():
             if(matrix[i][j] == '@' and visited[i][j] == False):
                 #print("Un pocket")
                 dfs(i, j)
-                rooms+=1
 
     return rooms
 
