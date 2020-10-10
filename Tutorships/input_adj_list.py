@@ -21,7 +21,6 @@
 n, m = [int(x) for x in input().split()]
 
 adj = []
-vis = []
 
 for i in range(n):
     adj.append([])
