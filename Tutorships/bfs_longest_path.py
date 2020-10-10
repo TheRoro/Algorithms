@@ -28,7 +28,7 @@ def bfs():
             if visited[u] == False:
                 visited[u] = True
                 queue.append(u)
-                prev[u] = v
+            prev[u] = v
 
 
 def build_path():
