@@ -33,8 +33,8 @@ def dijkstra():
             if dist[v] + weight < dist[u]:
                 q.discard((u, dist[u]))
                 dist[u] = dist[v] + weight
-                pred[u] = v
                 q.add((u, dist[u]))
+                pred[u] = v
 
 def restore_path():
     v = end
@@ -53,4 +53,7 @@ print("With a total weight of:", dist[end])
 
 
 for i in range(len(path)-1):
-    print(path[i],"->",path[i+1], "peso:", dist[path[i+1]]-dist[path[i]])
+    node1 = path[i]
+    node2 = path[i+1]
+    print(node1,"->",node2, "peso:", dist[node2]-dist[node1])
+    
