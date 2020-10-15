@@ -41,17 +41,17 @@ def fib_top_down(n, memo):
 #O(1) for any query
 
 n = 10 #the length of the fibonacci sequence
-dp = [-1]*(n) #a list to store the values to have a O(1) time
+dp = [-1]*(n+1) #a list to store the values to have a O(1) time
 
 def fibo_dp(n):
     dp[0] = 0
     dp[1] = 1
-    for i in range(2, n):
+    for i in range(2, n+1):
         dp[i] = dp[i-1]+dp[i-2]
 
     for i in range(len(dp)):
         print(dp[i])
 
-#fibo_dp(n)
+fibo_dp(n)
 
 
