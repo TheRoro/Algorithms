@@ -6,14 +6,13 @@ Memo = [infinity]*(change+1)
 
 def coins_bottom_up(change, coins):
     Memo[0] = 0
-    for i in range(len(coins)): # 1 5 10 20 50
+    for coin in coins: # 1 5 10 20 50
         for j in range(change): # 0 1 2 3 4 5....
-            if(j >= coins[i]):
-                if (Memo[j - coins[i]] + 1 < Memo[j]):
-                    Memo[j] = 1 + Memo[j - coins[i]]
+            if(j >= coin):
+                if (Memo[j - coin] + 1 < Memo[j]):
+                    Memo[j] = Memo[j - coin] + 1
 
 bottom_up = False
-
 if bottom_up:
     coins_bottom_up(change+1, coins)
     for i in range(len(Memo)):
