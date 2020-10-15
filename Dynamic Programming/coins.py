@@ -1,38 +1,41 @@
-# Provide the minimum amount of coins given different sets of denominations of coins
-# E.g.
-# Given a denomination of coins with values of: 1cent, 5cents and 10cents 
-# Find out the minimum number of coins required to make a 25cents change.
+change = 14 #I Want the minimum number of coins to get a change of 14
+coins = [1,5,10,20,50] #The coins of the peruvian empire
+#This set of coins is also known as denomination
 infinity = 10**5
+Memo = [infinity]*(change+1)
+R = [None]*(change+1)
 
-den = [1,5,10]
-k = len(den)
+def coins_bottom_up(change, coins):
+    Memo[0] = 0
+    for i in range(len(coins)):
+        for j in range(change):
+            if(j >= coins[i]):
+                if (Memo[j - coins[i]] + 1 < Memo[j]):
+                    Memo[j] = 1 + Memo[j - coins[i]]
+                    R[j] = i
 
-n = 25
-dp = [infinity]*(n+1)
-s = [0]*(n+1)
 
+coins_bottom_up(change+1, coins)
+for i in range(len(Memo)):
+    print("Para un monto de:", i, "cents, serian", Memo[i], "coins")
 
-dp[0] = 0 #for a change of 0cents we need 0 coins
+change_detail = []
 
-def coin_change(den, n, k):
-    coin = 0
-    for i in range(1,n+1):
-        mini = infinity
-        for j in range(0,k):
-            if i >= den[j]:
-                mini = min(mini, 1+dp[i-den[j]])
-                coin = j
-        dp[i] = mini
-        s[i] = coin
-
-coin_change(den, n, k)
+for i in range(change+1):
+    change_detail.append([])
 
 def build_coin_types():
-    l = n
-    while l > 0:
-        print(s[l], den[s[l]])
-        l = l - den[s[l]]
+    for i in range(change+1):
+        l = i
+        print("For a change of", i)
+        while l > 0:
+            print(coins[R[l]], end=" ")
+            change_detail[i].append(coins[R[l]])
+            l = l - coins[R[l]]
+        print(" ")
 
 
-for i in range(int(ene)):
-    print("For a change of:", int(m), "cents. ->", dp[int(m)], "coins")
+for i in range(len(Memo)):
+    print(i, "->", Memo[i])
+
+build_coin_types()
