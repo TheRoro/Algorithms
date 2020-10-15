@@ -3,7 +3,6 @@ coins = [1,5,10,20,50] #The coins of the peruvian empire
 #This set of coins is also known as denomination
 infinity = 10**5
 Memo = [infinity]*(change+1)
-R = [None]*(change+1)
 
 def coins_bottom_up(change, coins):
     Memo[0] = 0
@@ -12,7 +11,6 @@ def coins_bottom_up(change, coins):
             if(j >= coins[i]):
                 if (Memo[j - coins[i]] + 1 < Memo[j]):
                     Memo[j] = 1 + Memo[j - coins[i]]
-                    R[j] = i
 
 bottom_up = False
 
