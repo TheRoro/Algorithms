@@ -26,8 +26,12 @@ def calc(n, cap):
 
 #ans = calc(n, capacity)
 #print(ans)
+
+
+
+
 weight = [1, 2, 4, 2, 5]
-value = [5, 3, 5, 3, 2]
+value  = [5, 3, 5, 3, 2]
 n = len(weight)
 cap = 10 #weight capacity
 K = [[0 for x in range(cap + 1)] for x in range(n + 1)] 
@@ -38,12 +42,16 @@ def knapsack_bottom_up():
             if i == 0 or j == 0:
                 K[i][j] = 0
             elif weight[i-1] <= j:
-                val_1 = value[i-1] + K[i-1][j- weight[i-1]]
+                val_1 = value[i-1] + K[i-1][j - weight[i-1]]
                 val_2 = K[i-1][j]
                 K[i][j] = max(val_1,val_2)
             else:
                 K[i][j] = K[i-1][j]
 
 knapsack_bottom_up()
+
+#print(K)
 for el in K:
     print(el)
+
+print(K[n][cap])
