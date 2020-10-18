@@ -35,7 +35,11 @@ def build_coin_types():
         print(" ")
 
 
-for i in range(len(Memo)):
-    print(i, "->", Memo[i])
+#for i in range(len(Memo)):
+#    print(i, "->", Memo[i])
 
 build_coin_types()
+
+print(R)
+for i in range(1,len(R)):
+    print(coins[R[i]])

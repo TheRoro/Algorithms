@@ -32,26 +32,26 @@ def calc(n, cap):
 
 weight = [1, 2, 4, 2, 5]
 value  = [5, 3, 5, 3, 2]
-n = len(weight)
+k = len(weight)
 cap = 10 #weight capacity
-K = [[0 for x in range(cap + 1)] for x in range(n + 1)] 
+Memo = [[0 for x in range(cap + 1)] for x in range(k + 1)] 
 
 def knapsack_bottom_up():
-    for i in range(n+1):
-        for j in range(cap+1):
+    for i in range(k+1): # elementos manzana chamito turron ...
+        for j in range(cap+1): #capacidaddes 0 1 2 3 4 5.. 10
             if i == 0 or j == 0:
-                K[i][j] = 0
+                Memo[i][j] = 0
             elif weight[i-1] <= j:
-                val_1 = value[i-1] + K[i-1][j - weight[i-1]]
-                val_2 = K[i-1][j]
-                K[i][j] = max(val_1,val_2)
+                val_1 = value[i-1] + Memo[i-1][j - weight[i-1]]
+                val_2 = Memo[i-1][j]
+                Memo[i][j] = max(val_1,val_2)
             else:
-                K[i][j] = K[i-1][j]
+                Memo[i][j] = Memo[i-1][j]
 
 knapsack_bottom_up()
 
 #print(K)
-for el in K:
+for el in Memo:
     print(el)
 
-print(K[n][cap])
+print(Memo[k][cap])

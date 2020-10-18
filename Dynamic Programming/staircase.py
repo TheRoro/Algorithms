@@ -12,8 +12,8 @@ def num_ways_static():
     dp[1] = 1
     for i in range(2, n+1):
         dp[i] = dp[i-1] + dp[i-2]
-num_ways_static()
-print(dp)
+#num_ways_static()
+#print(dp)
 
 def num_ways():
     n = 10
@@ -26,6 +26,6 @@ def num_ways():
             if(i - j >= 0):
                 total += dp[i-j]
         dp[i] = total
-
-#num_ways()
+    print(dp)
+num_ways()
 #print(dp)
