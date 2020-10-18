@@ -1,3 +1,8 @@
+#Dada una escalera de tamaño N (con N escalones)
+#Y dada una denominación de pasos posibles que puedes dar
+#Ejemplo pasos de 1 o pasos de 2
+#Determine la cantidad de formas que hay de subir esa escalera
+
 n = 10
 dp = [None]*(n+1)
 
