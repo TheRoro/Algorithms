@@ -30,13 +30,13 @@ def generateSubTrees(subtrees):
         subtrees = sorted(subtrees, key=lambda x: x[1])
     return subtrees
 
-def encode(node, left=True, binString=''):
+def encode(node, left=True, string=''):
     if type(node) is str:
-        return {node: binString}
+        return {node: string}
     (l, r) = node.left, node.right
     d = dict()
-    d.update(encode(l, True, binString + '0'))
-    d.update(encode(r, False, binString + '1'))
+    d.update(encode(l, True, string + '0'))
+    d.update(encode(r, False, string + '1'))
     return d
 
 def PreOrder(node, left=True, string=''):
@@ -82,7 +82,8 @@ def printFrequencyTable(text, freq, code):
     if huffman_bits < non_huffman_bits:
         print("You saved:", non_huffman_bits - huffman_bits, "bits.")
         print("Percentage: ", (1-huffman_bits/non_huffman_bits)*100, "%", " of memory saved", sep="")
-
+    else:
+        print("Is more convenient not to use Huffman Algorithm")
 #Variables
 
 text = "Este es mi texto AAAAAAAAAAAAA"
@@ -101,5 +102,5 @@ code = encode(subtrees[0][0])
 
 printFrequencyTable(text, freq, code)
 
-PreOrder(subtrees[0][0])
+#PreOrder(subtrees[0][0])
 searchInTree(subtrees[0][0], "A")
