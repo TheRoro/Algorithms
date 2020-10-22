@@ -1,19 +1,17 @@
 def countFrequencies(text):
-    mydict = {}
+    mydic = {}
     for el in text:
-        if el in mydict:
-            mydict[el]+= 1
+        if el in mydic:
+            mydic[el]+= 1
         else:
-            mydict[el] = 1
-    return mydict
+            mydic[el] = 1
+    return mydic
 
-def sortFrequencies(mydict):
+def sortFrequencies(mydic):
     subtrees = []
-    for el in sorted(mydict, key=mydict.get):
-        subtrees.append((el, mydict[el]))
-
-    freq = subtrees #save the freq as auxiliary
-    return subtrees, freq
+    for el in sorted(mydic, key=mydic.get):
+        subtrees.append((el, mydic[el]))
+    return subtrees
 
 class SubArbol:
     def __init__(self, left=None, right=None):
@@ -22,16 +20,15 @@ class SubArbol:
 
 def generateSubTrees(subtrees):
     while len(subtrees) != 1:
-        left = subtrees[0]
-        right = subtrees[1]
-        subtrees = subtrees[2:]
+        left = subtrees.pop(0)
+        right = subtrees.pop(0)
         subtree = SubArbol(left[0], right[0])
         subtrees.append((subtree, left[1] + right[1]))
         subtrees = sorted(subtrees, key=lambda x: x[1])
     return subtrees
 
 def encode(node, left=True, string=''):
-    if type(node) is str:
+    if type(node) is str: #Si el nodo es una hoja
         return {node: string}
     (l, r) = node.left, node.right
     d = dict()
@@ -63,16 +60,16 @@ def searchInTree(subtree, char):
     else:
         print("The character", char, "was found, with a string of:", ans[0][1])
 
-def printFrequencyTable(text, freq, code):
+def printFrequencyTable(text, mydic, code):
     print("Char", "Freq", "String", "Size", sep="\t")
     total_size = 0
-    total_char = len(freq)
+    total_char = len(mydic)
     total_freq = 0
-    for el in freq:
-        s = code[el[0]]
-        size = len(s)*el[1]
-        fre = el[1]
-        print(el[0], fre, s, size, sep="\t")
+    for el in mydic:
+        s = code[el]
+        size = len(s)*mydic[el]
+        fre = mydic[el]
+        print(el, fre, s, size, sep="\t")
         total_size+=size
         total_freq+=fre
     huffman_bits = total_size+total_char*8+total_freq
@@ -86,21 +83,21 @@ def printFrequencyTable(text, freq, code):
         print("Is more convenient not to use Huffman Algorithm")
 #Variables
 
-text = "Este es mi texto AAAAAAAAAAAAA"
-mydict = {}
+#text = "Este es mi texto AAAAAAAAAAAAA"
+text = "BCAADDDCCACACAC"
+mydic = {}
 subtrees = []
-freq = []
 code = {}
 
 #Algorithm
 
-mydict = countFrequencies(text)
-subtrees, freq = sortFrequencies(mydict)
+mydic = countFrequencies(text)
+subtrees = sortFrequencies(mydic)
 
 subtrees = generateSubTrees(subtrees)
 code = encode(subtrees[0][0])
 
-printFrequencyTable(text, freq, code)
+printFrequencyTable(text, mydic, code)
 
 #PreOrder(subtrees[0][0])
 searchInTree(subtrees[0][0], "A")
