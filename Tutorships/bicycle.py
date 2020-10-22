@@ -1,6 +1,6 @@
 n = 24 #we can lend the bicycle for 12 hours a day
 
-friends = 9 #I have 5 friends that I could lend my bicycle to
+friends = 9 #I have 9 friends that I could lend my bicycle to
 #This 9 friends want the bike in a determined interval
 #e.g: Chamo             wants the bike from 02 to 03
 #     Villegas          wants the bike from 02 to 04
@@ -49,6 +49,6 @@ print("inicio:", inicio)
 print("final:", final)
 print("My friends:", myFriends)
 
-#prestar_bicicleta()
+prestar_bicicleta()
 
 
