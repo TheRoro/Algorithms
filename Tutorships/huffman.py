@@ -8,13 +8,15 @@ for el in s:
     else:
         mydic[el]+=1
 
+print(mydic)
+
 q = []
 
 for el in mydic:
     q.append((el, mydic[el]))
 
-print(mydic)
-print(q)
+#print(mydic)
+#print(q)
 
 class Arbol:
     def __init__(self, left, right):
@@ -46,4 +48,4 @@ def buscar(node, search, string=''):
     return 0
 
 buscar(q[0][0], 'O', '')
-print(ans[0][1])
+print(ans[0][0], ans[0][1])
