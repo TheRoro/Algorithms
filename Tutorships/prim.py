@@ -33,8 +33,8 @@ def prim():
 prim()
 
 total = 0
-print("The minimum spanning tree is:")
+print("El MST es:")
 for i in range(1, len(pred)):
-    print(pred[i], "->", i, "weight:", dist[i])
+    print(pred[i], "->", i, "peso:", dist[i])
     total+=dist[i]
-print("With a total weight of:", total);
+print("Con un peso total de:", total);
