@@ -29,7 +29,6 @@ def prim():
         for elem in adj[v]:
             u = elem[0] #adjacent node
             weight = elem[1] #weight asociated to that adjacent node
-            print("Im in node", u, "With cost:", weight)
             visited[v] = True
             if  weight < dist[v] and visited[u] == False:
                 dist[v] = weight
