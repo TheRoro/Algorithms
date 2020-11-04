@@ -17,12 +17,14 @@ path = []
 def prim():
 
     q = set()
-    q.add((start, 0))
+    q.add((start, infinity))
 
     while q:
         v = q.pop()[0]
+        print("Node", v)
         visited[v] = True
         for elem in adj[v]:
+            print("Hijo de:", v, "es:", elem)
             u = elem[0] #adjacent node
             weight = elem[1] #weight asociated to that adjacent node
             if  weight < dist[u] and visited[u] == False:

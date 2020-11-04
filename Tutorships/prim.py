@@ -21,20 +21,23 @@ def prim():
 
     while q:
         v = q.pop()[0]
+        print("Node", v)
         visited[v] = True
         for elem in adj[v]:
+            print("Hijo de:", v, "es:", elem)
             u = elem[0] #adjacent node
             weight = elem[1] #weight asociated to that adjacent node
             if  weight < dist[u] and visited[u] == False:
                 q.add(elem)
                 dist[u] = weight
                 pred[u] = v
+                print("El predecesor de", u, "es:", pred[u])
 
 prim()
 
 total = 0
-print("El MST es:")
+print("The minimum spanning tree is:")
 for i in range(1, len(pred)):
-    print(pred[i], "->", i, "peso:", dist[i])
+    print(pred[i], "->", i, "weight:", dist[i])
     total+=dist[i]
-print("Con un peso total de:", total);
+print("With a total weight of:", total);
