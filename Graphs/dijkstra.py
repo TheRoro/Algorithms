@@ -10,7 +10,7 @@ adj = [
 infinity = 10**10
 
 start = 0
-end = 4
+end = 4 # not necessary since Bellman-Ford calculates a single source shortest path (SSSP)
 n = len(adj)
 dist = n * [infinity]
 pred = n * [None]
