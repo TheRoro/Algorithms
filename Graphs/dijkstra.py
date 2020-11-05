@@ -1,4 +1,6 @@
 #Dijkstra implementation using sets
+#This implementation has a complexity of O(nlogn + mlogm), since the operations of
+#updating and extracting have a complexity of logn in a set.
 adj = [
 [(1,10),(2,15)],
 [(0,10),(3,19)],
