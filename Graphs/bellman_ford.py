@@ -1,28 +1,4 @@
-infinity = 10000000
-
-def bellman_ford(G, s):
-    n = len(G)
-    dist = [infinity]*n
-    path = [None]*n
-
-    dist[s] = 0
-    for i in range(n-1):
-        for u in range(n):
-            for v, w in G[u]:
-                f = dist[u] + w
-                if f < dist[v]:
-                    dist[v] = f
-                    path[v] = u
-
-    for u in range(n):
-        for v, w in G[u]:
-            if dist[u] + w < dist[v]:
-                return None, None, False
-    
-
-    return dist, path, True
-
-
+#Bellman ford implementation
 adj = [
 [(1,10),(2,15)],
 [(0,10),(3,19)],
@@ -31,4 +7,31 @@ adj = [
 [(2,13),(3,11)]
 ]
 
-print(bellman_ford(adj, 0))
+infinity = 10000000
+negInfinity = -(infinity)
+start = 0
+end = 4 # not necessary since Bellman-Ford calculates a single source shortest path (SSSP)
+n = len(adj)
+dist = n * [infinity]
+pred = n * [None]
+path = []
+
+def bellman_ford(s):
+
+    dist[s] = 0
+    for i in range(n-1):
+        for v in range(n):
+            for u, w in adj[v]:
+                if dist[v] + w < dist[u]:
+                    dist[u] = dist[v] + w
+                    pred[u] = v
+
+    for v in range(n):
+        for u, w in adj[v]:
+            if dist[v] + w < dist[u]:
+                    dist[u] = negInfinity
+                    pred[u] = None
+
+bellman_ford(start)
+print(dist)
+print(pred)
