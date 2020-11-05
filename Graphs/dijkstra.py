@@ -11,7 +11,7 @@ adj = [
 
 infinity = 10**10
 
-start = 0
+start = 0 #necessary
 end = 4 # not necessary since Dijkstra calculates a single source shortest path (SSSP)
 n = len(adj)
 dist = n * [infinity]
@@ -26,11 +26,11 @@ def dijkstra():
     q.add((start, 0))
 
     while q:
-        v = q.pop()[0]
+        v = q.pop()[0] # 0 es v
 
         for elem in adj[v]:
-            u = elem[0] #adjacent node
-            weight = elem[1] #weight asociated to that adjacent node
+            u = elem[0] #adjacent node -> 1
+            weight = elem[1] #weight asociated to that adjacent node -> 10
 
             if dist[v] + weight < dist[u]:
                 q.discard((u, dist[u]))
