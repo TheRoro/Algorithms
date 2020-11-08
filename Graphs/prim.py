@@ -11,26 +11,26 @@ start = 0
 n = len(adj)
 dist = n * [infinity]
 pred = n * [None]
-visited = [False]*n
+visi = n * [False]
 path = []
 
 def prim():
 
-    q = set()
-    q.add((start, infinity))
-
+    q = []
+    dist[start] = 0
+    q.append((start, dist[start]))
     while q:
+        print(q)
         v = q.pop()[0]
-        print("Node", v)
-        visited[v] = True
-        for elem in adj[v]:
-            print("Hijo de:", v, "es:", elem)
-            u = elem[0] #adjacent node
-            weight = elem[1] #weight asociated to that adjacent node
-            if  weight < dist[u] and visited[u] == False:
-                q.add(elem)
-                dist[u] = weight
+        if visi[v]: continue
+        visi[v] = True
+        for u, w in adj[v]:
+            if not visi[u] and w < dist[u]:
+                print("elem", (u, w))
+                q.append((u, w))
+                dist[u] = w
                 pred[u] = v
+                #q.sort(key=lambda x: x[0])
 
 prim()
 
@@ -38,5 +38,11 @@ total = 0
 print("The minimum spanning tree is:")
 for i in range(1, len(pred)):
     print(pred[i], "->", i, "weight:", dist[i])
+
+for i in range(len(dist)):
     total+=dist[i]
-print("With a total weight of:", total);
+
+print("With a total weight of:", total)
+print(dist)
+print(pred)
+print("peso total", total)
