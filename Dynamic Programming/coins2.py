@@ -20,8 +20,8 @@ if bottom_up:
 
 
 #Coins top-down
-change = 13
-coins = [1,5,10,20,50]
+change = 40
+coins = [1,5,10,20,25,50]
 infinity = 10**5
 Memo = [infinity]*(change+1)
 R = [None]*(change+1)
@@ -30,14 +30,17 @@ def coins_top_down(change, coins, memo):
     if change == 0 or change == 1:
         value = change #cuando el vuelto es 0 necesito 0 coins cuando es 1 necesito 1 coin
         memo[change] = value
+        R[change] = 0
         return value
     else:
         mini = infinity
         for i in range(len(coins)):
             if coins[i] <= change:
                 value = coins_top_down(change - coins[i], coins, memo)
+                R[change] = i
             if value < mini:
                 mini = value + 1
+                
         memo[change] = mini
         return mini
 
@@ -45,5 +48,11 @@ top_down = True
 if top_down:
     coins_top_down(change, coins, Memo)
 
-    for el in Memo:
-        print(el, end=" ")
+def build():
+    l = 39
+    print("Para un valor de:", l, "necesito monedas de:")
+    while l > 0:
+        print(coins[R[l]], sep=" ")
+        l = l - coins[R[l]]
+
+build()
