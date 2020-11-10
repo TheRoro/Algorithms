@@ -23,27 +23,27 @@ class DisjointSet:
             self.id[parentA] += self.id[parentB]
             self.id[parentB] = parentA
 
-import heapq
+import heapq #heapq = priority queue
 
-def kruskal(G):
-    n = len(G)
-    Gprima = [[] for _ in range(n)]
+def kruskal(adj):
+    n = len(adj)
+    ans = [[] for _ in range(n)]
     ds = DisjointSet(n)
     edges = []
-    for u in range(n):
-        for v, w in G[u]:
+    for u in range(n): #guardar todas las aristas de forma ascendente
+        for v, w in adj[u]:
             heapq.heappush(edges, (w, u, v))
 
     numEdges = 0
-    while numEdges < n-1:
+    while numEdges < n-1: #mejora la eficiencia de kruskal
         w, u, v = heapq.heappop(edges)
         if ds.find(u) != ds.find(v):
-            ds.union(u, v)
-            Gprima[u].append((v, w))
-            Gprima[v].append((u, w))
+            ds.union(u, v) #lo mas importante y esto altera el estado de la estructura de datos
+            ans[u].append((v, w))
+            ans[v].append((u, w))
             numEdges += 1
 
-    return Gprima
+    return ans
 
 adj = [[(2, 2), (3, 9), (4, 6)],
      [(2, 6), (5, 5)],
@@ -54,7 +54,17 @@ adj = [[(2, 2), (3, 9), (4, 6)],
      [(2, 6), (4, 1), (5, 4)],
      [(5, 4)]]
 
-mst = kruskal(adj)
+
+adj2 = [
+    [(1,10),(2,5)],
+    [(0,10), (2,8), (3,9), (4,25)],
+    [(0,5), (1,8), (3,7)],
+    [(2,7), (1,9), (4,13)],
+    [(1,25), (3,13)]
+]
+
+
+mst = kruskal(adj2)
 
 for i in range(len(mst)):
     for j in range(len(mst[i])):
