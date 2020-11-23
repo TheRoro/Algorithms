@@ -1,41 +1,50 @@
-def bfs_shortest():
+adj = [
+[1,2],
+[0,3],
+[0,3,4],
+[1,2,4],
+[2,3]
+]
 
-    adj = [[1, 3],
-    [0,2],
-    [1,3],
-    [0,1,2]]
+n = len(adj)
 
-    used = []
+visited = [False]*n
 
-    start = 0
-    goal = 2 
+start = 0
+finish = n - 1
+path = []
+prev = [None]*n
 
-    for i in range(len(adj)):
-        used.append(False)
+def bfs():
+    searchPath = True
+    visited[start] = True
+    queue = []
+    queue.append(start)
+    while queue and searchPath:
+        v = queue.pop(0)
+        for u in adj[v]:
+            if visited[u] == False:
+                visited[u] = True
+                queue.append(u)
+                prev[u] = v
+            if u == finish:
+                searchPath = False
 
-    queue = [[start]]
+def build_path():
+    v = finish
+    while v != None:
+        path.append(v+1)
+        v = prev[v]
+    return path
+    
 
-    if start == goal:
-        print("You already reached the node!!")
-        return
-        
+bfs()
+path = build_path()
+path.reverse()
 
-    while queue:
-        path = queue.pop(0)
-        node = path[-1]
-
-        if used[node] == False:
-            neighbours = adj[node]
-            for nei in neighbours:
-                new_path = list(path)
-                new_path.append(nei)
-                queue.append(new_path)
-
-                if nei == goal:
-                    print("The shortest path is", new_path)
-                    return
-                    
-                
-            used[node] = True
-
-bfs_shortest()
+if len(path) <= 1:
+    print("IMPOSSIBLE")
+else:
+    print(len(path))
+    for e in path:
+        print(e, sep="",end=" ")
