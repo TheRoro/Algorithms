@@ -12,12 +12,22 @@ class LinkedList:
         while val != None:
             print(val.data)
             val = val.next
+    
+    def append(self, node):
+        val = self.head
+        while val.next != None:
+            val = val.next
+        val.next = node
 
 
 listy = LinkedList()
 listy.head = Node(1)
+
 second = Node(2)
 third = Node(3)
-listy.head.next = second
-second.next = third
+fourth = Node(4)
+listy.append(second)
+listy.append(third)
+listy.append(fourth)
+
 listy.printy()
