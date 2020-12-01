@@ -38,22 +38,17 @@ class LinkedList:
 
 
 listy = LinkedList()
-#listy.head = Node(1)
 
 one = Node(1)
 two = Node(2)
 three = Node(3)
 four = Node(4)
+
 listy.appendy(one)
 listy.appendy(two)
 listy.appendy(three)
 listy.appendy(four)
-#second = Node(2)
-#third = Node(3)
-#fourth = Node(4)
-#listy.append(second)
-#listy.append(third)
-#listy.append(fourth)
+
 
 listy.printy()
 print(listy.size())
