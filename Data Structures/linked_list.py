@@ -15,7 +15,7 @@ class LinkedList:
             print(val.data)
             val = val.next
     
-    def append(self, node):
+    def dumb_append(self, node):
         val = self.head
         while val.next != None:
             val = val.next
@@ -35,20 +35,37 @@ class LinkedList:
             self.tails.next = node
             self.tails = node
         self.length+=1
+    
+    def findy(self, find_node):
+        val = self.head
+        i = 0
+        while val.next != None and val.data != find_node:
+            val = val.next
+            i+=1
+        
+        if(val.data == find_node):
+            return i
+        else:
+            return False
 
 
 listy = LinkedList()
 
-one = Node(1)
-two = Node(2)
-three = Node(3)
-four = Node(4)
+one = Node("RORO")
+two = Node("CHINO")
+three = Node("JUANKA")
+four = Node("LEYVA")
 
 listy.appendy(one)
 listy.appendy(two)
 listy.appendy(three)
 listy.appendy(four)
 
-
+print("List elements are:")
 listy.printy()
+
+print("List size is:")
 print(listy.size())
+
+print("Element is at index:")
+print(listy.findy("LEYVA"))
