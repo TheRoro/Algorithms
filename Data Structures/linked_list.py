@@ -49,7 +49,9 @@ class LinkedList:
             return False
 
     def getty(self, pos):
-        if pos >= self.length or pos <= 0: #add typeof int only
+        if type(pos) is not int:
+            return "Wrong type :("
+        if pos >= self.length or pos < 0: #add typeof int only
             return False
         val = self.head
         i = 0
@@ -58,6 +60,7 @@ class LinkedList:
             i+=1
         
         return val.data
+
 
 
 listy = LinkedList()
@@ -81,4 +84,5 @@ print(listy.size())
 print("Element is at index:")
 print(listy.findy("LEYVA"))
 
-print(listy.getty(-1))
+for i in range(listy.size()):
+    print(listy.getty(i))
