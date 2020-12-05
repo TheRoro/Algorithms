@@ -51,7 +51,7 @@ class LinkedList:
     def getty(self, pos):
         if type(pos) is not int:
             return "Wrong type :("
-        if pos >= self.length or pos < 0: #add typeof int only
+        if pos >= self.length or pos < 0:
             return False
         val = self.head
         i = 0
@@ -61,7 +61,72 @@ class LinkedList:
         
         return val.data
 
+    def pop(self):
+        if self.length == 0:
+            return False
+        val = self.head
+        if(self.size() == 1):
+            self.head = None
+        elif(self.size() == 2):
+            self.head = self.head.next
+            self.tails = None
+        else:
+            self.head = self.head.next
+        self.length-=1
+        return val.data
+    
+    def pop_back(self):
+        if self.length == 0:
+            return False
+        val = self.tails
+        if(self.size() == 1):
+            val = self.head
+            self.head = None
+        elif(self.size() == 2):
+            self.head.next = None
+            self.tails = None
+        else:
+            temp = self.head
+            pos = self.length - 2
+            i = 0
+            while temp.next != None and i != pos:
+                temp = temp.next
+                i+=1
+            temp.next = None
+            self.tails = temp
+        self.length-=1
+        return val.data
 
+    def deletyAt(self, pos):
+        if type(pos) is not int:
+            return "Wrong type :("
+        if pos >= self.length or pos < 0:
+            return False
+        
+        #Three cases:
+        #Element is at first position, create pop method
+        #Element is at last position, create pop_back method
+        #Element is at the middle, so there is: First, Middle, Last
+        #Remove pointer next from first and reasign to last
+        
+        if pos == 0: #First position
+            self.pop()
+        elif pos == self.length - 1: #last position
+            print("entre aqui")
+            self.pop_back()
+        else:
+            temp = self.head
+            temp2 = self.head
+            i = 0
+            while temp2.next != None and i != pos:
+                temp = temp2
+                temp2 = temp2.next
+                i+=1
+            temp.next = temp2.next
+            temp2.next = None
+            self.length-=1
+            #UPDATE TAILS
+            return temp2.data
 
 listy = LinkedList()
 
@@ -81,8 +146,62 @@ listy.printy()
 print("List size is:")
 print(listy.size())
 
-print("Element is at index:")
+print("Element LEYVA is at index:")
 print(listy.findy("LEYVA"))
 
-for i in range(listy.size()):
-    print(listy.getty(i))
+print("Element at index 1 is:")
+print(listy.getty(1))
+
+# print("deleting first element....")
+# print(listy.pop())
+
+# print("List size is:")
+# print(listy.size())
+
+# print("List elements are:")
+# listy.printy()
+
+# print("deleting last element....")
+# print(listy.pop_back())
+
+# print("List size is:")
+# print(listy.size())
+
+# print("List elements are:")
+# listy.printy()
+
+print("Erasing element at position 1:")
+print(listy.deletyAt(1))
+
+print("List size is:")
+print(listy.size())
+
+print("List elements are:")
+listy.printy()
+
+print("Erasing element at position 1:")
+print(listy.deletyAt(1))
+
+print("List size is:")
+print(listy.size())
+
+print("List elements are:")
+listy.printy()
+
+print("Erasing element at position 1:")
+print(listy.deletyAt(1))
+
+print("List size is:")
+print(listy.size())
+
+print("List elements are:")
+listy.printy()
+
+print("Erasing element at position 1:")
+print(listy.deletyAt(1))
+
+print("List size is:")
+print(listy.size())
+
+print("List elements are:")
+listy.printy()
