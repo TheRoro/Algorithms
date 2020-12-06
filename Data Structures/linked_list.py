@@ -25,6 +25,18 @@ class LinkedList:
     def size(self):
         return self.length
 
+    def pushy(self, node):
+        if(self.size() == 0):
+            self.head = node
+        elif(self.size() == 1):
+            self.tails = self.head
+            self.head = node
+            self.head.next = self.tails
+        else:
+            node.next = self.head
+            self.head = node
+        self.length+=1
+
     def appendy(self, node):
         if(self.size() == 0):
             self.head = node
@@ -36,6 +48,28 @@ class LinkedList:
             self.tails = node
         self.length+=1
     
+    def insertyAt(self, node, pos):
+        if type(pos) is not int:
+            return "Wrong type :("
+        if pos > self.length or pos < 0:
+            return False
+
+        if pos == 0: #First position
+            self.pushy(node)
+        elif pos == self.length: #last position
+            self.appendy(node)
+        else:
+            temp = self.head
+            temp2 = self.head
+            i = 0
+            while temp2.next != None and i != pos:
+                temp = temp2
+                temp2 = temp2.next
+                i+=1
+            temp.next = node
+            node.next = temp2
+            self.length+=1
+
     def findy(self, find_node):
         val = self.head
         i = 0
@@ -124,7 +158,6 @@ class LinkedList:
             temp.next = temp2.next
             temp2.next = None
             self.length-=1
-            #UPDATE TAILS
             return temp2.data
 
 listy = LinkedList()
@@ -135,9 +168,9 @@ three = Node("JUANKA")
 four = Node("LEYVA")
 
 listy.appendy(one)
-listy.appendy(two)
-listy.appendy(three)
-listy.appendy(four)
+listy.pushy(two)
+listy.insertyAt(three, 1)
+listy.insertyAt(four, 2)
 
 print("List elements are:")
 listy.printy()
