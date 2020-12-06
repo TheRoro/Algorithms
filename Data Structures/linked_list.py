@@ -107,13 +107,12 @@ class LinkedList:
         #Element is at first position, create pop method
         #Element is at last position, create pop_back method
         #Element is at the middle, so there is: First, Middle, Last
-        #Remove pointer next from first and reasign to last
+        #Remove pointer next from first and re assign to last
         
         if pos == 0: #First position
-            self.pop()
+            return self.pop()
         elif pos == self.length - 1: #last position
-            print("entre aqui")
-            self.pop_back()
+            return self.pop_back()
         else:
             temp = self.head
             temp2 = self.head
@@ -152,50 +151,11 @@ print(listy.findy("LEYVA"))
 print("Element at index 1 is:")
 print(listy.getty(1))
 
-# print("deleting first element....")
-# print(listy.pop())
+print("deleting first element....")
+print(listy.pop())
 
-# print("List size is:")
-# print(listy.size())
-
-# print("List elements are:")
-# listy.printy()
-
-# print("deleting last element....")
-# print(listy.pop_back())
-
-# print("List size is:")
-# print(listy.size())
-
-# print("List elements are:")
-# listy.printy()
-
-print("Erasing element at position 1:")
-print(listy.deletyAt(1))
-
-print("List size is:")
-print(listy.size())
-
-print("List elements are:")
-listy.printy()
-
-print("Erasing element at position 1:")
-print(listy.deletyAt(1))
-
-print("List size is:")
-print(listy.size())
-
-print("List elements are:")
-listy.printy()
-
-print("Erasing element at position 1:")
-print(listy.deletyAt(1))
-
-print("List size is:")
-print(listy.size())
-
-print("List elements are:")
-listy.printy()
+print("deleting last element....")
+print(listy.pop_back())
 
 print("Erasing element at position 1:")
 print(listy.deletyAt(1))
