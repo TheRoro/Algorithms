@@ -27,17 +27,32 @@ class DoublyLinkedList:
             node.prev = self.tails
             self.tails = node
         self.length+=1
+    
+    def push(self, data):
+        node = Node(data)
 
+        if(self.size() == 0):
+            self.head = node
+        elif(self.size() == 1):
+            self.tails = self.head
+            self.head = node
+            self.head.next = self.tails
+            self.tails.prev = self.head
+        else:
+            self.head.prev = node
+            node.next = self.head
+            self.head = node
+        self.length+=1
 
 listy = DoublyLinkedList()
 
 print(listy.length)
-listy.append("RORO")
-listy.append("CHINO")
+listy.push("RORO")
+listy.push("CHINO")
 print(listy.head.next.data)
 print(listy.tails.prev.data)
-listy.append("JUANKA")
-listy.append("LEYVA")
+listy.push("JUANKA")
+listy.push("LEYVA")
 print(listy.tails.data)
 print(listy.tails.prev.data)
 print(listy.length)
