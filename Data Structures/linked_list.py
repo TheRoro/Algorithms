@@ -168,6 +168,24 @@ class LinkedList:
             self.length-=1
             return temp2.data
 
+    def reverse(self):
+
+        first = None
+        second = self.head
+        third = self.head.next
+
+        self.tails = second
+
+        while(second != None):
+            second.next = first
+            first = second
+            second = third
+            if third != None:
+                third = third.next
+        
+        self.head = first
+
+
 listy = LinkedList()
 
 listy.appendy("RORO")
@@ -187,17 +205,21 @@ print(listy.findy("LEYVA"))
 print("Element at index 1 is:")
 print(listy.getty(1))
 
-print("deleting first element....")
-print(listy.pop())
+# print("deleting first element....")
+# print(listy.pop())
 
-print("deleting last element....")
-print(listy.pop_back())
+# print("deleting last element....")
+# print(listy.pop_back())
 
-print("Erasing element at position 1:")
-print(listy.deletyAt(1))
+# print("Erasing element at position 1:")
+# print(listy.deletyAt(1))
 
 print("List size is:")
 print(listy.size())
 
 print("List elements are:")
+listy.printy()
+
+listy.reverse()
+print("The reversed List is:")
 listy.printy()
