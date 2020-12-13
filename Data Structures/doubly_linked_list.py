@@ -13,6 +13,13 @@ class DoublyLinkedList:
     def size(self):
         return self.length
 
+    def print(self):
+        current = self.head
+
+        while current != None:
+            print(current.data)
+            current = current.next
+
     def append(self, data):
         node = Node(data)
 
@@ -103,8 +110,7 @@ listy.insertAt("RORO", 0)
 listy.insertAt("CHINO", 1)
 listy.insertAt("JUANKA", 1)
 listy.insertAt("LEYVA", 2)
-print(listy.head.data)
-print(listy.head.next.data)
-print(listy.tails.prev.data)
-print(listy.tails.data)
+
+listy.print()
+
 print(listy.length)
