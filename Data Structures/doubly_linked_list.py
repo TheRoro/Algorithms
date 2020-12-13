@@ -99,6 +99,23 @@ class DoublyLinkedList:
                 node.next = temp2
                 temp2.prev = node
                 self.length+=1
+    
+    def reverse(self):
+        first = None
+        second = self.head
+        third = self.head.next
+
+        self.tails = second
+
+        while second != None:
+            second.next = first
+            second.prev = third
+            first = second
+            second = third
+            if third != None:
+                third = third.next
+        
+        self.head = first
                 
 
 
@@ -111,6 +128,9 @@ listy.insertAt("CHINO", 1)
 listy.insertAt("JUANKA", 1)
 listy.insertAt("LEYVA", 2)
 
+listy.print()
+listy.reverse()
+print("Reversed doubly linked list")
 listy.print()
 
 print(listy.length)
