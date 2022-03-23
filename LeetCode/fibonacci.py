@@ -16,7 +16,7 @@ def fib2(n):
 
 
 def fib3(n):
-    dp = [-1]*(n+1)
+    dp = [-1] * (n + 1)
 
     if n < 1:
         return 0
@@ -28,6 +28,3 @@ def fib3(n):
         dp[i] = dp[i - 1] + dp[i - 2]
 
     return dp[n]
-
-
-print(fib3(0))
