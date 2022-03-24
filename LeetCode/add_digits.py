@@ -5,6 +5,3 @@ def add_digits(num):
             temp += int(x)
         num = temp
     return num
-
-
-print(add_digits(38))
