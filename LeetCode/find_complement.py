@@ -8,6 +8,3 @@ def findComplement(num: int) -> int:
             ans.append('0')
 
     return int(''.join(ans), 2)
-
-
-print(findComplement(5))
