@@ -21,7 +21,7 @@ def sort_colors(nums):
     for el in dicty:
         maxi = max(maxi, el)
 
-    for i in range(maxi+1):
+    for i in range(maxi + 1):
         if i in dicty:
             for n in range(dicty[i]):
                 nums[counter] = i
@@ -52,4 +52,4 @@ def sort_colors2(nums):
     return nums
 
 
-print(sort_colors2([2, 0, 2, 1, 1, 0]))
+sort_colors2([2, 0, 2, 1, 1, 0])
