@@ -1,22 +1,23 @@
+from collections import Counter
+
+
 class Solution(object):
     def longestConsecutive(self, nums):
-        dicty = {}
-        if len(nums) <= 1:
-            return len(nums)
+        count = Counter(nums)
 
-        for n in nums:
-            if n not in dicty:
-                dicty[n] = 1
+        max_sequence = 0
 
-        max_len = 0
-        act_len = 1
-        current = 0
-        for n in dicty:
-            if n - 1 not in dicty:
-                current = n
-                while current + 1 in dicty:
-                    act_len += 1
-                    current += 1
-                max_len = max(act_len, max_len)
-                act_len = 1
-        return max_len
+        for n in count:
+            if n - 1 in count:
+                continue
+            else:
+                # we are at the start of a subsequence
+                actual_count = 0
+                actual_value = n
+                while actual_value in count:
+                    actual_count += 1
+                    actual_value += 1
+
+                max_sequence = max(max_sequence, actual_count)
+
+        return max_sequence
