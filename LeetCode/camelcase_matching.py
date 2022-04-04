@@ -7,7 +7,6 @@ def camelMatch(self, queries, pattern: str):
             if j < len(pattern) and query[i] == pattern[j]:
                 j += 1
             elif ord("Z") >= ord(query[i]) >= ord("A"):
-                print("hola")
                 otherUppercase = True
 
         if j < len(pattern) or otherUppercase:
