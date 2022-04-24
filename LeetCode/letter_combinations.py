@@ -1,8 +1,8 @@
-def letterCombinations(digits):
+def letter_combinations(digits):
     if not digits:
         return []
 
-    lettersMap = {
+    letters_map = {
         "2": "abc",
         "3": "def",
         "4": "ghi",
@@ -15,15 +15,15 @@ def letterCombinations(digits):
 
     ans = []
 
-    def getCombinations(index, currentStr):
-        if len(currentStr) == len(digits):
-            ans.append(currentStr)
+    def get_combinations(index, current_str):
+        if len(current_str) == len(digits):
+            ans.append(current_str)
             return
 
-        letters = lettersMap[digits[index]]
+        letters = letters_map[digits[index]]
         for c in letters:
-            getCombinations(index + 1, currentStr + c)
+            get_combinations(index + 1, current_str + c)
 
-    getCombinations(0, "")
+    get_combinations(0, "")
 
     return ans
