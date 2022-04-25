@@ -5,7 +5,4 @@ def hamming_solution(x, y):
         if x == '1':
             counter += 1
 
-    print(counter)
-
-
-hamming_solution(1, 3)
+    return counter
