@@ -15,4 +15,4 @@ def num_jewels_in_stones(jewels, stones):
     return counter
 
 
-print(num_jewels_in_stones("z", "ZZ"))
+num_jewels_in_stones("z", "ZZ")
