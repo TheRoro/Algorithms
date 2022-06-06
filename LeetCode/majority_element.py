@@ -11,6 +11,3 @@ def majority_element(nums) -> int:
             count += 1
 
     return ans
-
-
-print(majority_element([2, 2, 1, 1, 1, 2, 2]))
