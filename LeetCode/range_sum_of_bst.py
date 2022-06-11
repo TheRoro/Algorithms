@@ -25,4 +25,3 @@ def rangeSum(root, low, high):
             queue.append(node.right)
 
     return range_sum
-
