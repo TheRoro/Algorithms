@@ -13,7 +13,5 @@ def remove_element(nums, val):
             nums[i], nums[last_pointer] = nums[last_pointer], nums[i]
             last_pointer -= 1
 
-    print(nums)
-
 
 remove_element([0, 1, 2, 2, 3, 0, 4, 2], 2)
