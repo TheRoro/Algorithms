@@ -12,4 +12,4 @@ def sub_array_sum(nums, k):
     return n_sub_arrays
 
 
-print(sub_array_sum([1, 1, 1], 2))
+sub_array_sum([1, 1, 1], 2)
