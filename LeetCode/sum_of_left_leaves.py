@@ -5,7 +5,6 @@ class Solution:
 
         if root.left and not root.left.left and not root.left.right:
             self.leftLeavesSum += root.left.val
-            print(self.leftLeavesSum)
 
         self.dfs(root.left)
         self.dfs(root.right)
