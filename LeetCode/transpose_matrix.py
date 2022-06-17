@@ -1,5 +1,4 @@
 def transpose(mat):
-
     cols = len(mat[0])
     rows = len(mat)
 
@@ -12,4 +11,4 @@ def transpose(mat):
     return ans
 
 
-print(transpose([[1,2,3],[4,5,6]]))
+transpose([[1, 2, 3], [4, 5, 6]])
