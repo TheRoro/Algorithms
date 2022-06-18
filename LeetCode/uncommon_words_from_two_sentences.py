@@ -25,4 +25,4 @@ def uncommonFromSentences(s1: str, s2: str):
     return ans
 
 
-print(uncommonFromSentences("this apple is sweet", "this apple is sour"))
+uncommonFromSentences("this apple is sweet", "this apple is sour")
